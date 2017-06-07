@@ -1,6 +1,7 @@
-package es.sephire.diorama.server.raspberry;
+package es.sephire.diorama.server.model;
 
 import io.vavr.Tuple3;
+import io.vavr.collection.List;
 import lombok.Data;
 
 /**
@@ -16,14 +17,19 @@ import lombok.Data;
  * - change the intensity of the light to a fixed value.
  * - pulsating intensity of the light.
  *
+ * A room acts as proxy of the contained lights, unless
+ * a particular light has its own behaviour.
+ *
  * @author Loïc Prieto - loic.sephiroth@gmail.com
  */
 @Data
 public class Room {
+
+    private List<Light> lights;
+
     private int identifier;
     private String name;
     private Tuple3<Byte,Byte,Byte> color;
-    private double intensity;
-
+    private LightState state;
 
 }
