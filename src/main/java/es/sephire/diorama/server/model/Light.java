@@ -17,5 +17,15 @@ public class Light extends Device {
     private LightState state;
     private Tuple3<Byte,Byte,Byte> color;
 
-
+    /**
+     * A light is in default state if it's state
+     * is just on.
+     * This is mainly used to let a Room know if it
+     * can override the light's settings.
+     *
+     * @return
+     */
+    public boolean isInDefaultState() {
+        return this.state != LightState.ON;
+    }
 }
