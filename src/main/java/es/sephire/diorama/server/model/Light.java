@@ -1,6 +1,7 @@
 package es.sephire.diorama.server.model;
 
 import io.vavr.Tuple3;
+import lombok.Data;
 
 /**
  * A light is an electronic device that can be configured
@@ -10,7 +11,8 @@ import io.vavr.Tuple3;
  *
  * @author Loïc Prieto - loic.sephiroth@gmail.com
  */
-public class Light {
+@Data
+public class Light extends Device {
     private int identifier;
     private LightState state;
     private Tuple3<Byte,Byte,Byte> color;

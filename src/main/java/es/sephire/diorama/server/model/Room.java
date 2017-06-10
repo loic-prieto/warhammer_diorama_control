@@ -23,13 +23,26 @@ import lombok.Data;
  * @author Loïc Prieto - loic.sephiroth@gmail.com
  */
 @Data
-public class Room {
-
+public class Room extends Device {
+    /**
+     * On which lights this rooms operates.
+     */
     private List<Light> lights;
-
-    private int identifier;
+    /**
+     * The state of the room applies it's config to
+     * all it's lights, if a light has no specific
+     * state of it's own.
+     */
+    private LightState roomState;
+    /**
+     * The name of the room, the human identifier.
+     */
     private String name;
+    /**
+     * The color of the room applies to all of it's
+     * contained lights, if those lights have no specific
+     * light of their own.
+     */
     private Tuple3<Byte,Byte,Byte> color;
-    private LightState state;
 
 }
