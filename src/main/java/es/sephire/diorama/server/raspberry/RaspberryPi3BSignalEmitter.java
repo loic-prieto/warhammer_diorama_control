@@ -1,5 +1,7 @@
 package es.sephire.diorama.server.raspberry;
 
+import com.pi4j.io.gpio.GpioController;
+import com.pi4j.io.gpio.GpioFactory;
 import es.sephire.diorama.server.DeviceAdapter;
 import es.sephire.diorama.server.Loggable;
 import es.sephire.diorama.server.SignalEmitter;
@@ -22,12 +24,14 @@ import io.vavr.control.Option;
 public class RaspberryPi3BSignalEmitter implements SignalEmitter, Loggable {
 
     private DeviceAdapterFactory adapterFactory;
+    private GpioController gpioController;
 
     public RaspberryPi3BSignalEmitter() {
-        this.adapterFactory = new DeviceAdapterFactory();
+        this(new DeviceAdapterFactory(), GpioFactory.getInstance());
     }
-    public RaspberryPi3BSignalEmitter(DeviceAdapterFactory adapterFactory) {
+    public RaspberryPi3BSignalEmitter(DeviceAdapterFactory adapterFactory,GpioController gpioController) {
         this.adapterFactory = adapterFactory;
+        this.gpioController = gpioController;
     }
 
     @Override
